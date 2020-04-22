@@ -11,8 +11,10 @@ from selenium.webdriver.common.by import By as by
 
 import time, logging, copy, os
 
-WAIT_TIME = 15
-MAX_RETRIES = 5
+WAIT_TIME = 15 or os.environ.get('WAIT_TIME')
+MAX_RETRIES = 5 or os.environ.get('MAX_RETRIES')
+JUPYTER_TOKEN = os.environ.get('JUPYTER_TOKEN')
+SERVICE_NAME = 'jupyter' or os.environ.get('SERVICE_NAME')
 
 if __name__ == '__main__':
     # setup the logger
@@ -55,7 +57,11 @@ if __name__ == '__main__':
             if current_retries == MAX_RETRIES:
                 raise Exception('Max retry limit hit, could not connect to jupyter server')
             
-            browser.get('http://jupyter:8888')
+            baseurl = 'http://{SERVICE_NAME}:8888'
+            if JUPYTER_TOKEN:
+                browser.get(f'{baseurl}?token={JUPYTER_TOKEN}')
+            else:
+                browser.get({baseurl})
             
             if browser.page_source != '<html><head></head><body></body></html>':
                 break
