@@ -51,23 +51,24 @@ if __name__ == '__main__':
         browser = Chrome(options=options)
     
         # give it some time for nbconvert to run and to spin up notebook server
+        baseurl = 'http://{0}:8888'.format(SERVICE_NAME)
+        
+        if JUPYTER_TOKEN:
+            baseurl = '{0}?token={1}'.format(baseurl, JUPYTER_TOKEN)
+
         current_retries = 0
         while True:
             
             if current_retries == MAX_RETRIES:
                 raise Exception('Max retry limit hit, could not connect to jupyter server')
-            
-            baseurl = 'http://{SERVICE_NAME}:8888'
-            if JUPYTER_TOKEN:
-                browser.get(f'{baseurl}?token={JUPYTER_TOKEN}')
-            else:
-                browser.get({baseurl})
+
+            browser.get(baseurl)
             
             if browser.page_source != '<html><head></head><body></body></html>':
                 break
             
             current_retries += 1
-            logger.info('Could not connect to server yet... Retry count = {0}'.format(current_retries))
+            logger.info('Could not connect to server at {0} yet... Retry count = {1}'.format(baseurl, current_retries))
             logger.info(browser.page_source)
             time.sleep(WAIT_TIME)
 
