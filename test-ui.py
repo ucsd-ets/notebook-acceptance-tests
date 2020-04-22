@@ -54,7 +54,7 @@ if __name__ == '__main__':
         baseurl = 'http://{0}:8888'.format(SERVICE_NAME)
         
         if JUPYTER_TOKEN:
-            baseurl = '{0}?token={1}'.format(baseurl, JUPYTER_TOKEN)
+            baseurl = '{0}/?token={1}'.format(baseurl, JUPYTER_TOKEN)
 
         current_retries = 0
         while True:
