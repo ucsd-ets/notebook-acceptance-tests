@@ -1,3 +1,3 @@
 # Notebook tests
 
-Simple python script for selenium testing notebook features
+Add any ui selenium tests here
