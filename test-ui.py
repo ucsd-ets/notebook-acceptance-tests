@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By as by
 import time, logging, copy, os
 
 WAIT_TIME = 15 or os.environ.get('WAIT_TIME')
-MAX_RETRIES = 5 or os.environ.get('MAX_RETRIES')
+MAX_RETRIES = 15 or os.environ.get('MAX_RETRIES')
 JUPYTER_TOKEN = os.environ.get('JUPYTER_TOKEN')
 SERVICE_NAME = 'jupyter' or os.environ.get('SERVICE_NAME')
 
