@@ -1,6 +1,0 @@
-2020-04-22 22:08:54,897 - selenium_ui - INFO - Could not connect to server yet... Retry count = 1
-2020-04-22 22:08:54,906 - selenium_ui - INFO - <html><head></head><body></body></html>
-2020-04-22 22:09:17,734 - selenium_ui - INFO - Could not connect to server at http://jupyter:8888 yet... Retry count = 1
-2020-04-22 22:09:17,742 - selenium_ui - INFO - <html><head></head><body></body></html>
-2020-04-22 22:10:28,924 - selenium_ui - INFO - Could not connect to server at http://jupyter:8888?token=test yet... Retry count = 1
-2020-04-22 22:10:28,932 - selenium_ui - INFO - <html><head></head><body></body></html>

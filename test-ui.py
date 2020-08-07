@@ -29,7 +29,7 @@ if __name__ == '__main__':
         ch.setFormatter(formatter)
         logger.addHandler(ch)
         
-        fh = logging.FileHandler('/opt/datahub/ui-test.log')
+        fh = logging.FileHandler('/opt/datahub-base-notebook/ui-test.log')
         fh.setLevel(logging.INFO)
         fh.setFormatter(formatter)
         logger.addHandler(fh)
