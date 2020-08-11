@@ -109,13 +109,13 @@ if __name__ == '__main__':
         time.sleep(WAIT_TIME)
         logger.info('datascience-rstudio.Rmd ok')
 
-        logger.info('Checking knit')
-        knit = webdriverwait(browser, WAIT_TIME).until(
-            ec.element_to_be_clickable((by.XPATH, '//*[@id="rstudio_container"]/div[2]/div/div[3]/div/div[4]/div/div/div[2]/div/div[6]/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div/div[2]/div/table/tbody/tr/td[1]/table/tbody/tr/td[19]/button/table/tbody/tr/td[2]/div'))
-        )
+        # logger.info('Checking knit')
+        # knit = webdriverwait(browser, WAIT_TIME).until(
+        #     ec.element_to_be_clickable((by.XPATH, '//*[@id="rstudio_container"]/div[2]/div/div[3]/div/div[4]/div/div/div[2]/div/div[6]/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div/div[2]/div/table/tbody/tr/td[1]/table/tbody/tr/td[19]/button/table/tbody/tr/td[2]/div'))
+        # )
 
-        knit.click()
-        logger.info('knit clicked worked')
+        # knit.click()
+        # logger.info('knit clicked worked')
 
         time.sleep(WAIT_TIME + 15)
 
