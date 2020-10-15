@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
         logger.info('Checking DSMLP cluster status')
         cluster_status_link = webdriverwait(browser, WAIT_TIME).until(
-            ec.presence_of_element_located((by.LINK_TEXT, 'DSMLP Cluster Status'))
+            ec.presence_of_element_located((by.LINK_TEXT, 'DSMLP Cluster History'))
         )
         cluster_status_link.click()
         logger.info('DSMLP cluster status ok')
