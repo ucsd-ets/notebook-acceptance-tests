@@ -61,16 +61,18 @@ if __name__ == '__main__':
             
             if current_retries == MAX_RETRIES:
                 raise Exception('Max retry limit hit, could not connect to jupyter server')
-
-            browser.get(baseurl)
             
-            if browser.page_source != '<html><head></head><body></body></html>':
-                break
-            
-            current_retries += 1
-            logger.info('Could not connect to server at {0} yet... Retry count = {1}'.format(baseurl, current_retries))
-            logger.info(browser.page_source)
-            time.sleep(WAIT_TIME)
+            try:
+                browser.get(baseurl)
+                
+                if browser.page_source != '<html><head></head><body></body></html>':
+                    break
+                
+                current_retries += 1
+            except:
+                logger.info('Could not connect to server at {0} yet... Retry count = {1}'.format(baseurl, current_retries))
+                logger.info(browser.page_source)
+                time.sleep(WAIT_TIME)
 
         logger.info('Connected to jupyter notebook')
 
