@@ -68,23 +68,25 @@ if __name__ == '__main__':
                 if browser.page_source != '<html><head></head><body></body></html>':
                     break
                 
-                current_retries += 1
+                
             except:
                 logger.info('Could not connect to server at {0} yet... Retry count = {1}'.format(baseurl, current_retries))
                 logger.info(browser.page_source)
                 time.sleep(WAIT_TIME)
+            finally:
+                current_retries += 1
 
         logger.info('Connected to jupyter notebook')
 
         # check only 1 tab
         assert len(browser.window_handles) == 1
 
-        logger.info('Checking DSMLP cluster status')
-        cluster_status_link = webdriverwait(browser, WAIT_TIME).until(
-            ec.presence_of_element_located((by.LINK_TEXT, 'DSMLP Cluster History'))
-        )
-        cluster_status_link.click()
-        logger.info('DSMLP cluster status ok')
+        # logger.info('Checking DSMLP cluster status')
+        # cluster_status_link = webdriverwait(browser, WAIT_TIME).until(
+        #     ec.presence_of_element_located((by.LINK_TEXT, 'DSMLP Cluster History'))
+        # )
+        # cluster_status_link.click()
+        # logger.info('DSMLP cluster status ok')
         
         logger.info('Checking nbgrader')
         courses_link = webdriverwait(browser, WAIT_TIME).until(
